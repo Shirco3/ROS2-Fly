@@ -1,0 +1,34 @@
+fly_catcher_controller:
+  ros__parameters:
+    # Topics and common world frame.
+    fly_topic: /fly/position
+    drone_state_topic: /drone/state
+    drone_cmd_topic: /drone/cmd
+    marker_topic: /fly_catcher/markers
+    world_frame: map
+
+    # Run faster than the 10 Hz measurement rate to publish smooth commands.
+    control_rate_hz: 20.0
+
+    # Assignment catch threshold.
+    catch_distance_m: 0.2
+
+    # Fail-safe: stop instead of flying using old measurements.
+    fly_timeout_s: 0.5
+    drone_timeout_s: 0.5
+
+    # Simulator limits and speed scheduling.
+    drone_speed_max_mps: 3.0
+    chase_speed_max_mps: 3.0
+    chase_speed_min_mps: 1.5
+    slow_radius_m: 0.7
+
+    # Constant-velocity fly prediction / lead pursuit.
+    lead_factor: 0.8
+    max_prediction_time_s: 2.0
+    velocity_filter_alpha: 0.5
+    fly_velocity_limit_mps: 1.2
+
+    # Human-readable status and RViz marker update rates.
+    status_rate_hz: 1.0
+    marker_rate_hz: 10.0
